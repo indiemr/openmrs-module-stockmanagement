@@ -108,6 +108,7 @@ public class StockSourceResource extends ResourceBase<StockSource> {
 		description.addProperty("name");
 		description.addProperty("acronym");
 		description.addProperty("sourceType");
+        description.addProperty("manufacturer");
 		return description;
 	}
 	
@@ -117,6 +118,7 @@ public class StockSourceResource extends ResourceBase<StockSource> {
 		description.addProperty("name");
 		description.addProperty("acronym");
 		description.addProperty("sourceType");
+        description.addProperty("manufacturer");
 		return description;
 	}
 	
@@ -127,6 +129,7 @@ public class StockSourceResource extends ResourceBase<StockSource> {
 			description.addProperty("uuid");
 			description.addProperty("name");
 			description.addProperty("acronym");
+            description.addProperty("manufacturer");
 		}
 		
 		if (rep instanceof DefaultRepresentation) {
@@ -152,7 +155,7 @@ public class StockSourceResource extends ResourceBase<StockSource> {
 		ModelImpl modelImpl = (ModelImpl) super.getGETModel(rep);
 		if (rep instanceof DefaultRepresentation || rep instanceof FullRepresentation) {
 			modelImpl.property("uuid", new StringProperty()).property("name", new StringProperty())
-			        .property("acronym", new StringProperty());
+			        .property("acronym", new StringProperty()).property("manufacturer", new StringProperty());
 		}
 		if (rep instanceof DefaultRepresentation) {
 			modelImpl.property("sourceType", new RefProperty("#/definitions/ConceptGetRef"));

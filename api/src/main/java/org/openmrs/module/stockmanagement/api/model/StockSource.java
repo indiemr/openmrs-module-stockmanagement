@@ -29,6 +29,9 @@ public class StockSource extends BaseChangeableOpenmrsData implements Serializab
 	@JoinColumn(name = "source_type_id", nullable = false)
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Concept sourceType;
+
+    @Column(name="manufacturer", length = 255)
+    private String manufacturer;
 	
 	public StockSource() {
 	}
@@ -66,4 +69,12 @@ public class StockSource extends BaseChangeableOpenmrsData implements Serializab
 	public void setSourceType(Concept sourceType) {
 		this.sourceType = sourceType;
 	}
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
 }
