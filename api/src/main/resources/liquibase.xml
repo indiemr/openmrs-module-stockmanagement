@@ -4717,11 +4717,15 @@ CREATE TRIGGER stockmgmt_location_after_delete
       </column>
     </addColumn>
   </changeSet>
-    <changeSet author="mutaJonathan" id="stockmanagement-2025-12-05-0800">
+    <changeSet author="mutaJonathan" id="stockmanagement-2025-12-08-0800">
         <addColumn tableName="stockmgmt_stock_source">
-            <column name="manufacturer" type="varchar(255)">
-                <constraints nullable="true"/>
-            </column>
+            <column name="manufacturer_id" type="int"/>
         </addColumn>
+
+        <addForeignKeyConstraint baseTableName="stockmgmt_stock_source"
+                                 baseColumnNames="manufacturer_id"
+                                 referencedTableName="concept"
+                                 referencedColumnNames="concept_id"
+                                 constraintName="fk_manufacturer_concept"/>
     </changeSet>
 </databaseChangeLog>

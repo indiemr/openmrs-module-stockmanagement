@@ -30,8 +30,9 @@ public class StockSource extends BaseChangeableOpenmrsData implements Serializab
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Concept sourceType;
 
-    @Column(name="manufacturer", length = 255)
-    private String manufacturer;
+    @JoinColumn(name = "manufacturer_id", nullable = true)
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Concept manufacturer;
 	
 	public StockSource() {
 	}
@@ -70,11 +71,11 @@ public class StockSource extends BaseChangeableOpenmrsData implements Serializab
 		this.sourceType = sourceType;
 	}
 
-    public String getManufacturer() {
+    public Concept getManufacturer() {
         return manufacturer;
     }
 
-    public void setManufacturer(String manufacturer) {
+    public void setManufacturer(Concept manufacturer) {
         this.manufacturer = manufacturer;
     }
 }

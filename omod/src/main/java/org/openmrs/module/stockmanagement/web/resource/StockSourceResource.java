@@ -129,16 +129,17 @@ public class StockSourceResource extends ResourceBase<StockSource> {
 			description.addProperty("uuid");
 			description.addProperty("name");
 			description.addProperty("acronym");
-            description.addProperty("manufacturer");
 		}
 		
 		if (rep instanceof DefaultRepresentation) {
 			description.addProperty("sourceType", Representation.REF);
 			description.addLink("full", ".?v=" + RestConstants.REPRESENTATION_FULL);
+            description.addProperty("manufacturer", Representation.REF);
 		}
 		
 		if (rep instanceof FullRepresentation) {
 			description.addProperty("sourceType", Representation.DEFAULT);
+            description.addProperty("manufacturer", Representation.DEFAULT);
 			description.addSelfLink();
 		}
 		
@@ -159,10 +160,12 @@ public class StockSourceResource extends ResourceBase<StockSource> {
 		}
 		if (rep instanceof DefaultRepresentation) {
 			modelImpl.property("sourceType", new RefProperty("#/definitions/ConceptGetRef"));
+            modelImpl.property("manufacturer", new RefProperty("#/definitions/ConceptGetRef"));
 		}
 		
 		if (rep instanceof FullRepresentation) {
 			modelImpl.property("sourceType", new RefProperty("#/definitions/ConceptGet"));
+            modelImpl.property("manufacturer", new RefProperty("#/definitions/ConceptGet"));
 		}
 		
 		if (rep instanceof RefRepresentation) {
