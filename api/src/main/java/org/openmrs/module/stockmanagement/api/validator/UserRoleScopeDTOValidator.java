@@ -28,10 +28,6 @@ public class UserRoleScopeDTOValidator implements Validator {
 		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userUuid", "error.null");
 		
-		if (Context.getAuthenticatedUser().getUuid().equalsIgnoreCase(object.getUserUuid()))
-			errors.rejectValue("userUuid",
-			    messageSourceService.getMessage("stockmanagement.userrolescopes.useruuid.selfupdate"));
-		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "role", messageSourceService.getMessage("error.null"));
 		
 		if (object.getPermanent() == null || !object.getPermanent()) {

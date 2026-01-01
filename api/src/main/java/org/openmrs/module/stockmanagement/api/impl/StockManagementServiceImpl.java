@@ -876,9 +876,6 @@ public class StockManagementServiceImpl extends BaseOpenmrsService implements St
             userRoleScope = getUserRoleScopeByUuid(delegate.getUuid());
             if (userRoleScope == null)
                 throw new APIException("User role scope " + delegate.getUuid() + " not found");
-            if (userRoleScope.getUser().getUuid().equalsIgnoreCase(Context.getAuthenticatedUser().getUuid())) {
-                invalidRequest("stockmanagement.userrolescopes.userUuid.selfupdate");
-            }
         } else {
             userRoleScope = new UserRoleScope();
             User user = Context.getUserService().getUserByUuid(delegate.getUserUuid());
@@ -886,9 +883,6 @@ public class StockManagementServiceImpl extends BaseOpenmrsService implements St
                 invalidRequest("stockmanagement.userrolescopes.user.notfound");
             }
             userRoleScope.setUser(user);
-            if (userRoleScope.getUser().getUuid().equalsIgnoreCase(Context.getAuthenticatedUser().getUuid())) {
-                invalidRequest("stockmanagement.userrolescopes.userUuid.selfupdate");
-            }
         }
         Role role = Context.getUserService().getRole(delegate.getRole());
         if (role == null) {
